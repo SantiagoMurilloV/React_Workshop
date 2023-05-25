@@ -11,7 +11,7 @@ root.render(
     <div>
     <CharacterCard/>
     </div>
-    
+   
   </React.StrictMode>
 );
 

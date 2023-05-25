@@ -1,15 +1,19 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { CharacterData } from "../swapi";
 import { CharacterCardModel } from "./CharacterCards";
 import { Button } from "./ButtonUpdate";
-import CharacterImage from './image'
+import CharacterImage from "./image";
+import R2 from '../image/R2-D2_Droid.png'
+
 
 import BBO from '../image/BBO.png'
 
-
 export const CharacterCard = () => {
 
-    const [character, setCharacter] = useState({})
+
+    const [imageSrc, setImageSrc] = useState(BBO);
+    const [character, setCharacter] = useState({});
+
 
     const fetchCharacterData = async () => {
         const data = await CharacterData();
@@ -28,15 +32,23 @@ export const CharacterCard = () => {
         fetchCharacterData();
     };
 
+    const changeImage = () => {
+        const newImage = imageSrc === BBO ? R2 : BBO;
+        setImageSrc(newImage);
+    };
+
+    const handleButtonClick = () => {
+        handleUpdate();
+        // changeImage();
+    };
+
     return (
-        
         <div className="CharacterCard">
-        <img src={BBO} alt="Logo Star Wars" />
-            <CharacterCardModel  character={character}/>
-            <Button text={''} onClick={handleUpdate} />
+            <div className="ImageWrapper">
+                <CharacterImage logo={imageSrc} className="CardImage" />
+            </div>
+            <CharacterCardModel character={character} />
+            <Button text={''} onClick={handleButtonClick} />        
         </div>
-
-       
-    )
-
-}
+    );
+};
