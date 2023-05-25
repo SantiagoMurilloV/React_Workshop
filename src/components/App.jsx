@@ -10,9 +10,8 @@ import BBO from '../image/BBO.png'
 
 export const CharacterCard = () => {
 
-
     const [imageSrc, setImageSrc] = useState(BBO);
-    const [character, setCharacter] = useState({});
+    const [character, setCharacter] = useState('');
 
 
     const fetchCharacterData = async () => {
